@@ -1,9 +1,15 @@
 #include "Garra.h"
 
-void Garra::begin(int pinControl, int pinTrig, int pinEcho) {
+void Garra::begin(int pinControl, int pinTrig, int pinEcho, int flag) {
    servo.attach(pinControl);
-   servo.write(0);
+   
    ultrasonic = Ultrasonic(pinTrig, pinEcho);
+
+   if (flag == 1){
+      servo.write(100);
+   }else if(flag == 2){
+      servo.write(0);
+   }
 }
 
 void Garra::abrir(bool enable)
