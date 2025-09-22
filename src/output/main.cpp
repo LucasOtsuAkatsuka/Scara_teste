@@ -49,18 +49,21 @@ void setup() {
 }
 
 void loop() {
-    braco1.goToIndex(1);
+    delay(1000);
     garraAF.abrir(true);
     delay(1000);
+    braco1.goToIndex(1);
+    delay(1000);
     garraAF.fechar(true);
+    delay(1000);
     garraSD.subir(true);
     delay(2000);
     braco1.goToIndex(2);
-    delay(2000);
-    braco1.goToIndex(3);
+    delay(1000);
     garraSD.descer(true);
+    delay(2000);
     garraAF.abrir(true);
-        delay(1000);
+    delay(2000);
     garraAF.fechar(true);
     delay(2000);
     // // int botaoPressionado;

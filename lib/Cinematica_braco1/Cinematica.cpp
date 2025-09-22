@@ -198,8 +198,8 @@ void Cinematica::setOrigin() {
 }
 
 void Cinematica::loadDefaultPoints() {
-  points_[1]  = { 50.0f,   188.0f };
-  points_[2]  = { 67.0f,  -400.0f };
+  points_[1]  = { 0.0f,   -300.0f};
+  points_[2]  = { 445.0f,   0.0f };
   points_[3]  = { 445.0f,   0.0f };
 }
 
