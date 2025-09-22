@@ -55,8 +55,8 @@ bool Cinematica::goToXY(float x_mm, float y_mm) {
     Serial.println(F("[SCARA] Ponto fora do alcance/limites."));
     return false;
   }
-  long target1 = degToSteps(th1_deg);
-  long target2 = degToSteps(th2_deg);
+  long target1 = 20*degToSteps(th1_deg);
+  long target2 = 16*degToSteps(th2_deg);
 
   Serial.print(F("[SCARA] IK -> th1=")); Serial.print(th1_deg);
   Serial.print(F(" deg, th2=")); Serial.print(th2_deg);
@@ -151,7 +151,7 @@ bool Cinematica::inRange(float v, float vmin, float vmax) {
 
 void Cinematica::moveSteps(uint8_t joint, long steps) {
   if (!m1_ || !m2_) return;
-
+  int i = 0;
   if (joint == 1) {
     long target = pos1_steps_ + steps;
     m1_->moveTo(target);
@@ -165,7 +165,22 @@ void Cinematica::moveSteps(uint8_t joint, long steps) {
     m2_->moveTo(target);
     while (m2_->distanceToGo() != 0) {
       m2_->run();
+      // if(i>0 && i<1200)
+      // {
+      //   if(Data[i-1] != m2_->currentPosition())
+      //   {
+      //     Data[i] = m2_->currentPosition();
+      //     i++;
+      //   }
+      // }
+      // yield();
+      //Serial.println(m2_->currentPosition());
     }
+    // for(int j=i;j<1200;j++)
+    // {
+    //   Serial.print(Data[j]);
+    //   Serial.print(",");
+    // }
     pos2_steps_ = m2_->currentPosition();
   }
 }
@@ -185,7 +200,7 @@ void Cinematica::setOrigin() {
 void Cinematica::loadDefaultPoints() {
   points_[1]  = { 50.0f,   188.0f };
   points_[2]  = { 67.0f,  -400.0f };
-  points_[3]  = { 47.0f,   319.0f };
+  points_[3]  = { 445.0f,   0.0f };
 }
 
 //void Cinematica::setMicrostepDivider(uint8_t divider) {

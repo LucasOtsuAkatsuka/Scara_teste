@@ -18,8 +18,8 @@ public:
   static constexpr uint8_t DEF_MICROSTEP_DIV  = 16; 
   static constexpr unsigned int DEF_DIR_SETUP_US = 2;
 
-  static constexpr float DEF_MAX_SPEED_STEPS_S = 5000.0f;
-  static constexpr float DEF_ACCEL_STEPS_S2    = 1000.0f;
+  static constexpr float DEF_MAX_SPEED_STEPS_S = 8000.0f;
+  static constexpr float DEF_ACCEL_STEPS_S2    = 8000.0f;
 
   Cinematica(int step1, int dir1, int step2, int dir2, int enPin = -1);
 
@@ -82,4 +82,5 @@ private:
   bool  runToBothTargets(long target1, long target2);
   static bool inRange(float v, float vmin, float vmax);
   void  loadDefaultPoints();
+  //long Data[1200];
 };
